@@ -11,7 +11,7 @@ export const searchView = (commonFoods, brandedFoods) =>{
 
     brandedFoods.forEach(food => {
         const brandedMarkup = `
-        <li class="b${food.nix_brand_id}">${food.food_name} </li>
+        <li class="b${food.nix_item_id}">${food.food_name} </li>
       `
       elements.brandedResult.insertAdjacentHTML('beforeend', brandedMarkup);
     })

@@ -18,7 +18,14 @@ export default class CommonItem {
                     'query':`${this.foodname}`,
                 }
             })
-            console.log(response);
+            this.foodname = response.data.foods[0].food_name;
+            this.calories = response.data.foods[0].nf_calories;
+            this.cholesterol = response.data.foods[0].nf_cholesterol;
+            this.dietary_fiber = response.data.foods[0].nf_dietary_fiber;
+            this.protein = response.data.foods[0].nf_protein;
+            this.total_carbs = response.data.foods[0].nf_total_carbohydrate;
+            this.total_fat = response.data.foods[0].nf_total_fat;
+
         }
         catch(error){
             console.log(error);
