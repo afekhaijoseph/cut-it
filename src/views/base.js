@@ -5,6 +5,7 @@ export const elements = {
     brandedResult : document.querySelector('.branded-food-result'),
     outerContainer : document.querySelector('.outer-container'),
     container : document.querySelector('.container'),
+    tdeeInput : document.querySelector('.tdee-input'),
 }
 
 export const addLoader = (parent) => {
@@ -20,3 +21,4 @@ export const addLoader = (parent) => {
     const loader = document.querySelector('.loader');
     if(loader) loader.parentElement.removeChild(loader);
   }
+

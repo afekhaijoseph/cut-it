@@ -18,18 +18,26 @@ export default class CommonItem {
                     'query':`${this.foodname}`,
                 }
             })
-            this.foodname = response.data.foods[0].food_name;
-            this.calories = response.data.foods[0].nf_calories;
-            this.cholesterol = response.data.foods[0].nf_cholesterol;
-            this.dietary_fiber = response.data.foods[0].nf_dietary_fiber;
-            this.protein = response.data.foods[0].nf_protein;
-            this.total_carbs = response.data.foods[0].nf_total_carbohydrate;
-            this.total_fat = response.data.foods[0].nf_total_fat;
+            const item = response.data.foods[0];
+            console.log(item);
+            this.foodname = item.food_name;
+            this.calories = item.nf_calories;
+            this.cholesterol = item.nf_cholesterol;
+            this.dietary_fiber = item.nf_dietary_fiber;
+            this.protein = item.nf_protein;
+            this.total_carbs = item.nf_total_carbohydrate;
+            this.total_fat = item.nf_total_fat;
+            this.photo = item.photo.thumb;
 
         }
         catch(error){
             console.log(error);
         }
 
+    }
+
+    calculateTdeePercentage(tdee){
+        console.log(tdee);
+        this.percentages = (this.calories/tdee) * 100;
     }
 }
