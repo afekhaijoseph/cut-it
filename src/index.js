@@ -25,26 +25,30 @@ const searchController = async () => {
     clearLoader();
 }
 
-
+elements.tdeeForm.addEventListener('submit', e =>{
+    e.preventDefault();
+    state.tdee = parseFloat(elements.tdeeInput.value);
+    
+})
 elements.commonResult.addEventListener('click', async e => {
     const item = e.target.getAttribute('class');
-    const tdee = elements.tdee.value;
+    
     const newItem = item.split(' ');
     if (e.target.matches(`.${newItem[0]}`)) {
         state.commonItem = new CommonItem(item);
         searchView.clearSearch();
         addLoader(elements.container);
         await state.commonItem.getCommonItem();
-        state.commonItem.calculateTdeePercentage(tdee)
+        state.commonItem.calculateTdeePercentage(state.tdee)
         commonView.renderCommonItem(state.commonItem);
         clearLoader()
     }
 
 })
 
-elements.brandedResult.addEventListener('click', async e => {
+
+elements.brandedResult.addEventListener('click', async (e) => {
     let id = e.target.getAttribute('class');
-    
     if (e.target.matches(`.${id}`)) {
         try{
             id=id.substring(1);
@@ -79,3 +83,4 @@ elements.searchInput.addEventListener('keydown', e => {
         searchController();
     }
 })
+

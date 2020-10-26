@@ -38,6 +38,6 @@ export default class CommonItem {
 
     calculateTdeePercentage(tdee){
         console.log(tdee);
-        this.percentages = (this.calories/tdee) * 100;
+        this.percentage = Math.round((this.calories/tdee) * 100);
     }
 }

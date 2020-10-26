@@ -5,7 +5,9 @@ export const elements = {
     brandedResult : document.querySelector('.branded-food-result'),
     outerContainer : document.querySelector('.outer-container'),
     container : document.querySelector('.container'),
-    tdeeInput : document.querySelector('.tdee-input'),
+    tdeeInput : document.querySelector('.tdee-field'),
+    tdeeForm : document.querySelector('.tdee-form'),
+    tdeeBtn : document.querySelector('.tdee-btn')
 }
 
 export const addLoader = (parent) => {

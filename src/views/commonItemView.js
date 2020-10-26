@@ -11,7 +11,7 @@ export const renderCommonItem = (item) => {
         <div>
             <p><i>This food item contains</i></p>
             <h2>${item.calories} <span> calories </span></h2>
-            <p>and it therefore consumes ${this.percentage}% of your total daily caloric intake</p>
+            <p>and it therefore consumes ${item.percentage}% of your total daily caloric intake</p>
             <img src="${item.photo}" style = "width: 350px">
         </div>
           
@@ -25,7 +25,7 @@ export const renderCommonItem = (item) => {
         </div>
     </div>
     `
-    elements.container.insertAdjacentHTML('afterbegin', markup);
+    elements.container.insertAdjacentHTML('beforeend', markup);
 
 }
 
