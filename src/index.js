@@ -39,7 +39,7 @@ elements.commonResult.addEventListener('click', async e => {
         searchView.clearSearch();
         addLoader(elements.container);
         await state.commonItem.getCommonItem();
-        state.commonItem.calculateTdeePercentage(state.tdee)
+        state.commonItem.calculateTdeePercentage(state.tdee);
         commonView.renderCommonItem(state.commonItem);
         clearLoader()
     }
@@ -68,6 +68,16 @@ elements.brandedResult.addEventListener('click', async (e) => {
 })
 
 
+elements.container.addEventListener('change', (e)=>{
+    if(e.target.matches('.unit-options')){
+        const selection = document.querySelector('.unit-options');
+        state.option = selection.options[selection.selectedIndex].value;
+        const newcalories = state.commonItem.calculateCalorieUnit(state.option);
+        console.log(newcalories)
+        commonView.updateCalories(newcalories)
+    }
+    
+})
 
     
 

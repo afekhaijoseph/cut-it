@@ -28,7 +28,8 @@ export default class CommonItem {
             this.total_carbs = item.nf_total_carbohydrate;
             this.total_fat = item.nf_total_fat;
             this.photo = item.photo.thumb;
-
+            this.serving_measures = item.alt_measures;
+            this.serving_weight = item.serving_weight_grams;
         }
         catch(error){
             console.log(error);
@@ -37,7 +38,17 @@ export default class CommonItem {
     }
 
     calculateTdeePercentage(tdee){
-        console.log(tdee);
         this.percentage = Math.round((this.calories/tdee) * 100);
+    }
+    calculateCalorieUnit (unit) {
+        this.serving_measures.forEach( serving => {
+            if (unit === serving.measure){
+
+               this.calories = Math.round((serving.serving_weight / this.serving_weight) * this.calories);
+
+            }
+
+        })
+      
     }
 }
