@@ -69,15 +69,17 @@ elements.brandedResult.addEventListener('click', async (e) => {
 
 
 elements.container.addEventListener('change', (e)=>{
-    if(e.target.matches('.unit-options')){
-        const selection = document.querySelector('.unit-options');
+    if(e.target.matches('.common-unit-options')){
+        const selection = document.querySelector('.common-unit-options');
         state.option = selection.options[selection.selectedIndex].value;
-        const newcalories = state.commonItem.calculateCalorieUnit(state.option);
-        console.log(newcalories)
-        commonView.updateCalories(newcalories)
+        const newCalorie = state.commonItem.parseCalorie(state.option);
+        const newPercentage = state.commonItem.updatePercentage(newCalorie, state.tdee);
+        commonView.percentageUpdate(newPercentage);
+        commonView.updateCalories(newCalorie);
     }
     
 })
+
 
     
 
@@ -93,4 +95,3 @@ elements.searchInput.addEventListener('keydown', e => {
         searchController();
     }
 })
-

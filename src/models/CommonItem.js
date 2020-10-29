@@ -30,6 +30,7 @@ export default class CommonItem {
             this.photo = item.photo.thumb;
             this.serving_measures = item.alt_measures;
             this.serving_weight = item.serving_weight_grams;
+            this.serving_unit = item.serving_unit;
         }
         catch(error){
             console.log(error);
@@ -40,15 +41,22 @@ export default class CommonItem {
     calculateTdeePercentage(tdee){
         this.percentage = Math.round((this.calories/tdee) * 100);
     }
-    calculateCalorieUnit (unit) {
+    parseCalorie(unit) {
+        let newCalorie;
         this.serving_measures.forEach( serving => {
-            if (unit === serving.measure){
-
-               this.calories = Math.round((serving.serving_weight / this.serving_weight) * this.calories);
-
+            if (unit === this.serving_unit){
+                newCalorie = this.calories;
             }
+            else if (unit === serving.measure){
 
+               newCalorie = Math.round((serving.serving_weight / this.serving_weight) * this.calories);
+              
+            }
         })
+        return newCalorie;
       
+    }
+    updatePercentage(calorie, tdee){
+        return Math.round((calorie/tdee) * 100);
     }
 }

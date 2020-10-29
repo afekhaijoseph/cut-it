@@ -11,11 +11,11 @@ export const renderCommonItem = (item) => {
         <div>
 
             <p><i>This food item contains</i></p>
-            <h2 class="item-calories">${item.calories} <span> calories </span></h2>
-            <p>and it therefore consumes ${item.percentage}% of your total daily caloric intake</p>
+            <h2><span class="item-calories">${item.calories}</span> <span> calories </span></h2>
+            <p>and it therefore consumes <span class="item-percent">${item.percentage}</span>% of your total daily caloric intake</p>
             <img src="${item.photo}" style = "width: 350px">
-            <select class="unit-options">
-             ${item.serving_measures.map(e => `<option> ${e.measure} </option>`) }
+            <select class="common-unit-options">
+             ${item.serving_measures.map(e => e.measure === item.serving_unit ? `<option selected> ${e.measure} </option>` : `<option> ${e.measure} </option>`) }
             </select>
         </div>
           
@@ -40,8 +40,12 @@ export const clearCommonItem = () => {
   }
 
 export const updateCalories = (calories) => {
-    console.log(calories);
     const calorieTag = document.querySelector('.item-calories');
     calorieTag.textContent = calories;
 
+}
+
+export const percentageUpdate = (percent) => {
+    const percentageTag = document.querySelector('.item-percent');
+    percentageTag.textContent = percent;
 }
