@@ -17,7 +17,7 @@ const searchController = async () => {
     if(state.search) searchView.clearSearch();
     if(state.brandedItem) brandedView.clearBrandedItem();
     if(state.commonItem) commonView.clearCommonItem();
-    addLoader(elements.container);
+    addLoader(elements.searchContainer);
     await state.search.getResults();
     const commonFoodResult = state.search.commonFood;
     const brandedFoodResult = state.search.brandedFood;
@@ -25,8 +25,9 @@ const searchController = async () => {
     clearLoader();
 }
 
-elements.tdeeForm.addEventListener('submit', e =>{
+elements.tdeeBtn.addEventListener('click', e =>{
     e.preventDefault();
+    searchView.tdeeALert();
     state.tdee = parseFloat(elements.tdeeInput.value);
     
 })
@@ -56,8 +57,9 @@ elements.brandedResult.addEventListener('click', async (e) => {
             searchView.clearSearch();
             addLoader(elements.container);
             await state.brandedItem.getBrandedItem();
-            clearLoader();
+            state.brandedItem.calculateTdeePercentage(state.tdee);
             brandedView.renderBrandedItem(state.brandedItem);
+            clearLoader();
         }
 
         catch(error){
@@ -85,6 +87,7 @@ elements.container.addEventListener('change', (e)=>{
 
 elements.searchBtn.addEventListener('click', e => {
     e.preventDefault();
+    console.log(elements.searchBtn);
     if(state.search) searchView.clearSearch();
     searchController();
 });

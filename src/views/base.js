@@ -1,4 +1,5 @@
 export const elements = {
+    searchContainer:document.querySelector('.search-area__container'),
     searchInput : document.querySelector('.search-field'),
     searchBtn : document.querySelector('.search-btn'),
     commonResult : document.querySelector('.common-food-result'),
@@ -12,15 +13,16 @@ export const elements = {
 
 export const addLoader = (parent) => {
     const markup = `
-    <div class="loader">
-    <img src="https://img.icons8.com/metro/26/000000/spinner-frame-5.png"/>
-    </div>`
-  
-    parent.insertAdjacentHTML('afterbegin', markup);
+    <div class="loader lds-ellipsis"><div class="load"></div><div></div><div></div><div></div></div>
+    `
+    if(parent === elements.searchContainer){
+      elements.searchBtn.style.display="none";
+    }
+    parent.insertAdjacentHTML('beforeend', markup);
   }
   
-  export const clearLoader = () => {
-    const loader = document.querySelector('.loader');
-    if(loader) loader.parentElement.removeChild(loader);
-  }
-
+export const clearLoader = () => {
+  const loader = document.querySelector('.loader');
+  if(loader) loader.parentElement.removeChild(loader);
+  elements.searchBtn.style.display="block";
+}

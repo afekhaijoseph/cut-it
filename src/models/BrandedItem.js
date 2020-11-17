@@ -17,6 +17,7 @@ export default class BrandedItem {
                     },
                 })
                 const item = response.data.foods[0];
+                console.log(item);
                 
                 this.brandname = item.brand_name;
                 this.foodname = item.food_name;
@@ -27,7 +28,7 @@ export default class BrandedItem {
                 this.total_carbs = item.nf_total_carbohydrate;
                 this.total_fat = item.nf_total_fat;
                 this.photo = item.photo.thumb;
-                this.serving_weight = item.serving_weight_grams;
+                this.serving_qty = item.serving_qty;
                 this.serving_unit = item.serving_unit;
                 
             }

@@ -4,7 +4,7 @@ export const renderBrandedItem = (item) => {
     console.log(item);
     const markup = `
     <div class="branded-item">
-        <h2>${item.foodname}</h2>
+        <h2>${item.serving_qty} ${item.serving_unit } of ${item.foodname}</h2>
         <div>
 
             <p><i>This food item contains</i></p>
