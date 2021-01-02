@@ -8,9 +8,10 @@ export const renderCommonItem = (item) => {
 
     const markup = `
     <div class="common-item">
-        <h2>${item.foodname.toUpperCase()}</h2>
+        <h2 style="text-align:center">${item.foodname.toUpperCase()}</h2>
+        <div class="box">
         <div class="common-item__image">
-           <img src="${item.photo}" style = "width: 350px">
+           <img src="${item.photo}">
         </div>
         <div class="common-item__details">
             <p><i>This food item contains</i></p>
@@ -18,17 +19,15 @@ export const renderCommonItem = (item) => {
             <select class="common-unit-options">
              ${item.serving_measures.map(e => e.measure === item.serving_unit ? `<option selected> ${e.measure} </option>` : `<option> ${e.measure} </option>`) }
             </select>
-            <p>and it therefore consumes <span class="item-percent">${item.percentage}</span>% of your total daily caloric intake</p>
-            
-          
-        <div class="item-macros">
-        <p>Cholesterol : ${item.cholesterol ? `${item.cholesterol}ml/dL` : 'none'}</p>
-
-        <p>Ditery fiber : ${item.dietary_fiber ? `${item.dietary_fiber}g`   : 'none'}</p>
-        <p>Carbs : ${item.total_carbs}g</p>
-        <p>Protein : ${item.protein}g</p>
-        <p>Fat : ${item.total_fat}g</p>
-        </div>
+            <p>and it therefore consumes <span class="item-percent">${item.percentage}</span>% of your total daily caloric intake</p>    
+            <div class="item-macros">
+                <p>Cholesterol : ${item.cholesterol ? `${item.cholesterol}ml/dL` : 'none'}</p>
+                <p>Ditery fiber : ${item.dietary_fiber ? `${item.dietary_fiber}g`   : 'none'}</p>
+                <p>Carbs : ${item.total_carbs}g</p>
+                <p>Protein : ${item.protein}g</p>
+                <p>Fat : ${item.total_fat}g</p>
+            </div>
+         </div>
         </div>
     </div>
     `
